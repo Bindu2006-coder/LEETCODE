@@ -1,0 +1,21 @@
+import java.util.*;
+
+class Solution {
+    public int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g); // sort children greed factors
+        Arrays.sort(s); // sort cookie sizes
+
+        int child = 0; // pointer for children
+        int cookie = 0; // pointer for cookies
+
+        while (child < g.length && cookie < s.length) {
+            if (s[cookie] >= g[child]) {
+                // cookie can satisfy this child
+                child++;
+            }
+            // move to next cookie either way
+            cookie++;
+        }
+        return child; // number of content children
+    }
+}
